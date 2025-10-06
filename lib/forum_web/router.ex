@@ -26,6 +26,11 @@ defmodule ForumWeb.Router do
     resources "/posts", PostController, except: [:new, :edit]
   end
 
+   scope "/api", ForumWeb do
+    pipe_through :api # midleware layer
+    resources "/users", UserController, except: [:new, :edit]
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", ForumWeb do
   #   pipe_through :api
